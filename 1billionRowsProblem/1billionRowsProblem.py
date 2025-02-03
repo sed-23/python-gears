@@ -34,16 +34,26 @@ class GenerateInputFile:
     
     def write_input_file(self):
         with open(self.input_file, 'a') as append_file:
+            count = 0
+            output_list = []
             for iteration in range(self.num_of_rows):
-                print(f'Iteration :: {iteration}')
-                append_file.write(self.city_to_tmp_mapper())
+                count += 1
+                output_list.append(self.city_to_tmp_mapper())
+                if count > 1000000:
+                    print(f'Writing batch :: {iteration}')
+                    append_file.write(''.join(output_list))
+                    count = 0
+                    output_list = []
+            append_file.write(''.join(output_list))
 
 if __name__ == '__main__':
     import time 
     start_time = time.time()
-    input_file_generator = GenerateInputFile(1000000)
+    input_file_generator = GenerateInputFile()
     input_file_generator.write_input_file()
     print(f'Total time -- {start_time - time.time()}')
+
+# Writing to file for 10000 rows ( Total time -- -3640.038066148758 secs )
 
 
     
