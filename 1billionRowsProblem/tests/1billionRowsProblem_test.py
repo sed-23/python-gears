@@ -1,4 +1,5 @@
 import unittest
 
 class BillionRowsProblemTest(unittest.TestCase):
-    pass
+    def setUp(self):
+        file_path = "../1billionRowInput.txt"
