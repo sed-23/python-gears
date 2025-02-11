@@ -84,21 +84,20 @@ if __name__ == '__main__':
             file.write(batch_str)     
     ## Took 1080.6874585151672 secs for 250500000 rows - file size 3.49 GB
 
-    # # -------------------------------
-    # # Write to CSV file
-    # # -------------------------------
-    csv_filename = '1billionRowInput.csv'
-    with open(csv_filename, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        # Write header row
-        writer.writerow(["City", "Temperature"])
-        batch_counter = 0
-        for batch in results:
-            batch_counter += 1
-            print(f'Writing batch number (CSV) - {batch_counter}')
-            # Write all rows in this batch
-            writer.writerows(batch)
-    # ## Took 343.7139251232147 secs for 250500000 rows - file size 3. GB
+    # # # -------------------------------
+    # # # Write to CSV file
+    # # # -------------------------------
+    # csv_filename = '1billionRowInput.csv'
+    # with open(csv_filename, 'w', newline='') as csvfile:
+    #     writer = csv.writer(csvfile)
+    #     # Write header row
+    #     writer.writerow(["City", "Temperature"])
+    #     batch_counter = 0
+    #     for batch in results:
+    #         batch_counter += 1
+    #         print(f'Writing batch number (CSV) - {batch_counter}')
+    #         # Write all rows in this batch
+    #         writer.writerows(batch)
 
     # # -------------------------------
     # # Write to Parquet file using PyArrow
