@@ -70,19 +70,19 @@ if __name__ == '__main__':
     with Pool() as pool:
         results = pool.map(input_file_generator.generate_weather_data, batches)
 
-    # # # -------------------------------
-    # # # Write to TEXT file
-    # # # -------------------------------
-    # filename = '1billionRowInput.txt'
-    # with open(filename, 'w', newline='') as file:
-    #     batch_counter = 0
-    #     for batch in results:
-    #         batch_counter += 1
-    #         print(f'Writing batch number (CSV) - {batch_counter}')
-    #         batch = [f'{item[0]}:{item[1]}\n' for item in batch]
-    #         batch_str = ''.join(batch)
-    #         file.write(batch_str)     
-    # ## Took 1080.6874585151672 secs for 250500000 rows - file size 3.49 GB
+    # # -------------------------------
+    # # Write to TEXT file
+    # # -------------------------------
+    filename = '1billionRowInput.txt'
+    with open(filename, 'w', newline='') as file:
+        batch_counter = 0
+        for batch in results:
+            batch_counter += 1
+            print(f'Writing batch number (TXT) - {batch_counter}')
+            batch = [f'{item[0]}:{item[1]}\n' for item in batch]
+            batch_str = ''.join(batch)
+            file.write(batch_str)     
+    ## Took 1080.6874585151672 secs for 250500000 rows - file size 3.49 GB
 
     # # -------------------------------
     # # Write to CSV file
